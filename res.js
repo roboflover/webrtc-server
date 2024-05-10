@@ -20,18 +20,15 @@ async function start() {
     //localVideo.srcObject = localStream;
 
     peerConnection = new RTCPeerConnection(config);
-
-    // Добавляем треки локального потока в peer connection
-    // localStream.getTracks().forEach(track => {
-    //     peerConnection.addTrack(track, localStream);
-    // });
-
-    // remoteVideo.srcObject = localStream
-    // Устанавливаем удаленный поток, как только он приходит
-    peerConnection.ontrack = event => {
-        console.log(event)
-        remoteVideo.srcObject = event.streams[0];
+    peerConnection.ontrack = ({ streams: [stream] }) => {
+        console.log(remoteVideo)
+        remoteStream = stream
+        remoteVideo.srcObject = stream;
     };
+    // peerConnection.ontrack = event => {
+    //     console.log(event)
+    //     remoteVideo.srcObject = event.streams[0];
+    // };
 
     // Обработка кандидатов ICE
     peerConnection.onicecandidate = event => {
