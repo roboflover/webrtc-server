@@ -11,7 +11,7 @@ const config = {
 const ws = new WebSocket('ws://77.222.38.116:3000');
 ws.onmessage = async message => {
     const data = JSON.parse(message.data);
-    console.log(data)
+    //console.log(data)
     await handleSignalingData(data);
 };
 
@@ -21,14 +21,14 @@ async function start() {
 
     peerConnection = new RTCPeerConnection(config);
     peerConnection.ontrack = ({ streams: [stream] }) => {
-        console.log(remoteVideo)
+        console.log(stream)
         remoteStream = stream
         remoteVideo.srcObject = stream;
     };
-    // peerConnection.ontrack = event => {
-    //     console.log(event)
-    //     remoteVideo.srcObject = event.streams[0];
-    // };
+    peerConnection.ontrack = event => {
+        console.log(event)
+        remoteVideo.srcObject = event.streams[0];
+    };
 
     // Обработка кандидатов ICE
     peerConnection.onicecandidate = event => {
