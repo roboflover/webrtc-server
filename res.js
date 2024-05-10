@@ -11,7 +11,7 @@ const config = {
 const ws = new WebSocket('ws://77.222.38.116:3000');
 ws.onmessage = async message => {
     const data = JSON.parse(message.data);
-    //console.log(message)
+    console.log(data)
     await handleSignalingData(data);
 };
 
