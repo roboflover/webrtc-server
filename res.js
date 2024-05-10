@@ -16,7 +16,7 @@ ws.onmessage = async message => {
 };
 
 async function start() {
-    localStream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
+    //localStream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
     //localVideo.srcObject = localStream;
 
     peerConnection = new RTCPeerConnection(config);
