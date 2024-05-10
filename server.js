@@ -6,7 +6,7 @@ wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
     // Рассылка сообщения всем подключенным клиентам
     wss.clients.forEach(function each(client) {
-      console.log(client)
+      //console.log(client)
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         // Убедитесь, что отправляемые данные являются строкой JSON
         const messageToSend = JSON.stringify(message);
