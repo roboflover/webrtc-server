@@ -22,11 +22,11 @@ async function start() {
     peerConnection = new RTCPeerConnection(config);
 
     // Добавляем треки локального потока в peer connection
-    localStream.getTracks().forEach(track => {
-        peerConnection.addTrack(track, localStream);
-    });
+    // localStream.getTracks().forEach(track => {
+    //     peerConnection.addTrack(track, localStream);
+    // });
 
-    remoteVideo.srcObject = localStream
+    // remoteVideo.srcObject = localStream
     // Устанавливаем удаленный поток, как только он приходит
     peerConnection.ontrack = event => {
         remoteVideo.srcObject = event.streams[0];
