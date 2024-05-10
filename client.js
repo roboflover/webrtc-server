@@ -8,7 +8,7 @@ const config = {
 };
 
 // Создаем WebSocket соединение
-const ws = new WebSocket('ws://localhost:3000');
+const ws = new WebSocket('ws://77.222.38.116:3000');
 ws.onmessage = async message => {
     const data = JSON.parse(message.data);
     //console.log(message)
