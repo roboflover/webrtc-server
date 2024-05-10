@@ -29,6 +29,7 @@ async function start() {
     // remoteVideo.srcObject = localStream
     // Устанавливаем удаленный поток, как только он приходит
     peerConnection.ontrack = event => {
+        console.log(event)
         remoteVideo.srcObject = event.streams[0];
     };
 
@@ -47,7 +48,7 @@ async function start() {
 }
 
 async function handleSignalingData(data) {
-    await console.log(data)
+    //await console.log(data)
 
     if (data.offer) {
         await peerConnection.setRemoteDescription(new RTCSessionDescription(data.offer));
