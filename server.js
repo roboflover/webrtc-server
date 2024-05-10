@@ -10,15 +10,12 @@ wss.on('connection', function connection(ws) {
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         // Убедитесь, что отправляемые данные являются строкой JSON
         const messageToSend = JSON.stringify(message);
+        console.log(messageToSend)
         client.send(messageToSend);
       }
     });
     
   });
 });
-
-function sendData(data , conn) {
-  conn.send(JSON.stringify(data))
-}
 
 console.log('WebSocket server started on ws://localhost:3000');
